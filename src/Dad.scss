@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+// Variables
+$primary-color: #9868e0;
+$button-color: #9f68e0;
+$white: #fff;
+$shadow-light: rgba(0, 0, 0, 0.1);
+$shadow-dark: rgba(0, 0, 0, 0.1);
+
+// Global reset
+* {
+  box-sizing: border-box;
+}
+
+// Body styles with flexbox centering
+body {
+  background-color: $primary-color;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 20px;
+}
+
+// Main container
+.container {
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px $shadow-light, 0 6px 6px $shadow-dark;
+  padding: 50px 20px;
+  text-align: center;
+  max-width: 100%;
+  width: 800px;
+
+  // Heading styles
+  h3 {
+    margin: 0;
+    opacity: 0.5;
+    letter-spacing: 2px;
+  }
+}
+
+// Joke display area
+.joke {
+  font-size: 30px;
+  letter-spacing: 1px;
+  line-height: 40px;
+  margin: 50px auto;
+  max-width: 600px;
+}
+
+// Button styles with hover and active states
+.btn {
+  background-color: $button-color;
+  color: $white;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px $shadow-light, 0 6px 6px $shadow-dark;
+  padding: 14px 40px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  // Active state with scale effect
+  &:active {
+    transform: scale(0.98);
+  }
+
+  // Focus state
+  &:focus {
+    outline: 0;
+  }
+
+  // Disabled state
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  // Hover effect
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px $shadow-light, 0 10px 10px $shadow-dark;
+    background-color: darken($button-color, 5%);
+  }
+}
+
+// Hint text styling
+.hint {
+  margin-top: 30px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  animation: fadeIn 2s ease-in;
+  
+  strong {
+    color: $button-color;
+    font-weight: 600;
+  }
+}
+
+// Fade in animation for hint
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+// Add subtle animation to joke text
+.joke {
+  font-size: 30px;
+  letter-spacing: 1px;
+  line-height: 40px;
+  margin: 50px auto;
+  max-width: 600px;
+  transition: opacity 0.3s ease;
+  
+  // Smooth text transition
+  &.loading {
+    opacity: 0.7;
+  }
+}
+
+// Responsive improvements
+@media (max-width: 768px) {
+  .container {
+    padding: 40px 15px;
+    width: 95%;
+  }
+  
+  .joke {
+    font-size: 24px;
+    line-height: 32px;
+    margin: 30px auto;
+  }
+  
+  .btn {
+    padding: 12px 30px;
+    font-size: 14px;
+  }
+  
+  .hint {
+    font-size: 12px;
+    margin-top: 25px;
+  }
+}
